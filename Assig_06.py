@@ -1,22 +1,20 @@
-###  Assignment No 6 ###
-
-"""Assignment Title : : Implement and visualize Dependency Parsing of Textual Input
-using Stan- ford CoreNLP and Spacy library"""
-
-
 import spacy
 from spacy import displacy
 
+# Load the small English model from spaCy
 nlp = spacy.load("en_core_web_sm")
 
+# Input paragraph for dependency parsing
 multiline_text = """
-Earth is the third planet from the Sun in our solar system and the only known celestial body to support life. 
-With a diverse range of ecosystems, it is home to a vast array of plant and animal species, including humans. 
-Earth's atmosphere, composed mainly of nitrogen and oxygen, sustains life by providing the necessary conditions for biological processes to thrive.
+Artificial Intelligence is transforming the way humans interact with technology. 
+It enables machines to perform tasks that traditionally required human intelligence. 
+Through deep learning and data analysis, AI systems can now recognize speech, translate languages, and even make decisions.
 """
 
+# Process the text with the NLP model
 multiline_doc = nlp(multiline_text)
 
+# Display each token’s tag, head, and dependency relation
 for token in multiline_doc:
     print(
         f"""
@@ -27,6 +25,5 @@ TOKEN: {token.text}
 {token.dep_ = }"""
     )
 
+# Visualize the dependency structure in the browser
 displacy.serve(multiline_doc, style="dep")
-
-
